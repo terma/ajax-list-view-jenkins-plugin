@@ -1,3 +1,43 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
-TEST
+
+    <script type="text/javascript" src="${rootURL}/plugin/rich-view-plugin/js/angular.js"></script>
+    <script type="text/javascript" src="${rootURL}/plugin/rich-view-plugin/js/engine.js"></script>
+    <!-- <link rel="stylesheet" href="${rootURL}/plugin/rich-view-plugin/css/style.css"/> -->
+
+<div ng-app="simpleAccount" ng-controller="SimpleAccount1" class="dashboard">
+
+<table class="pane bigtable">
+    <tbody>
+        <tr ng-repeat="build in view.builds track by $index">
+            <td ng-repeat="column in build">
+                <ng-switch on="column.name">
+
+                    <span ng-switch-when="hudson.views.StatusColumn">
+                        <img src="{{ column.img }}"/>
+                    </span>
+
+                    <span ng-switch-when="hudson.views.LastSuccessColumn">
+                        {{ column.value }}
+                    </span>
+
+                    <span ng-switch-when="hudson.views.LastFailureColumn">
+                        {{ column.value }}
+                    </span>
+
+                    <span ng-switch-when="hudson.views.LastDurationColumn">
+                        {{ column.value }}
+                    </span>
+
+                    <a href="{{ column.link }}" class="model-link inside" ng-switch-when="hudson.views.JobColumn">{{ column.value }}</a>
+
+                    <span ng-switch-default=""></span>
+
+                </ng-switch>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
 </j:jelly>
