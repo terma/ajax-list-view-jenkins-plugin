@@ -6,8 +6,18 @@
 
 <div ng-app="simpleAccount" ng-controller="SimpleAccount1" class="dashboard">
 
-<table class="pane bigtable">
+<j:set var="views" value="${it.owner.views}" />
+<j:set var="currentView" value="${it}" />
+<st:include page="viewTabs.jelly" it="${it.owner.viewsTabBar}" />
+
+<table id="projectstatus" class="pane bigtable" style="margin-top:0px; border-top: none;">
     <tbody>
+        <tr style="border-top: 0">
+            <th ng-repeat="column in view.builds[0]">
+                {{ column.title }}
+            </th>
+        </tr>
+
         <tr ng-repeat="build in view.builds track by $index">
             <td ng-repeat="column in build">
                 <ng-switch on="column.name">
@@ -15,6 +25,8 @@
                     <span ng-switch-when="hudson.views.StatusColumn">
                         <img src="{{ column.img }}"/>
                     </span>
+
+                    <img ng-switch-when="hudson.views.WeatherColumn" src="{{ column.img }}" class="build-health-icon"/>
 
                     <span ng-switch-when="hudson.views.LastSuccessColumn">
                         {{ column.value }}

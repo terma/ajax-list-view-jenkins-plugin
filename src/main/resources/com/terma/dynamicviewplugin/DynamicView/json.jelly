@@ -34,18 +34,29 @@
                 ,
             </j:if>
 
+            {
+
+                "name": "${col.class.name}",
+                "title": "${col.descriptor.displayName}",
+
             <j:choose>
 
                 <j:when test="${ col.class.name == 'hudson.views.StatusColumn' }">
-                    {
                         "name": "${col.class.name}",
                         "img": "${job.iconColor.getImageOf('32x32')}",
                         "description": "${job.iconColor.description}"
-                    }
+                </j:when>
+
+                <j:when test="${ col.class.name == 'hudson.views.WeatherColumn' }">
+
+                        <!-- todo fix hardcoded jenkins prefix -->
+
+                        "name": "${col.class.name}",
+                        "img": "/jenkins/${job.buildHealth.getIconUrl('32x32')}",
+                        "description": "${job.buildHealth.score}"
                 </j:when>
 
                 <j:when test="${ col.class.name == 'hudson.views.JobColumn' }">
-                    {
                         "name": "${col.class.name}",
                         "h": "${h}",
 
@@ -53,11 +64,9 @@
                         "value": "${h.getRelativeDisplayNameFrom(job, itemGroup)}",
 
                         "link": "${jobBaseUrl}${job.shortUrl}"
-                    }
                 </j:when>
 
                 <j:when test="${ col.class.name == 'hudson.views.LastSuccessColumn' }">
-                    {
                         "name": "${col.class.name}",
 
                         <j:set var="lsBuild" value="${job.lastSuccessfulBuild}"/>
@@ -69,11 +78,9 @@
                                 "value": "N/A"
                             </j:otherwise>
                         </j:choose>
-                    }
                 </j:when>
 
                 <j:when test="${ col.class.name == 'hudson.views.LastFailureColumn' }">
-                    {
                         "name": "${col.class.name}",
 
                         <j:set var="lsBuild" value="${job.lastFailedBuild}"/>
@@ -85,11 +92,9 @@
                                 "value": "N/A"
                             </j:otherwise>
                         </j:choose>
-                    }
                 </j:when>
 
                 <j:when test="${ col.class.name == 'hudson.views.LastDurationColumn' }">
-                    {
                         "name": "${col.class.name}",
 
                         <j:set var="lBuild" value="${job.lastSuccessfulBuild ?: job.lastFailedBuild}"/>
@@ -102,17 +107,16 @@
                                 "value": "N/A"
                             </j:otherwise>
                         </j:choose>
-                    }
                 </j:when>
 
                 <j:otherwise>
-                    {
-                        "name": "${col.class.name}",
                         "unknown": true
-                    }
                 </j:otherwise>
 
             </j:choose>
+
+            }
+
         </j:forEach>
     ]
     </j:forEach>
