@@ -1,0 +1,18 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
+
+<script type="text/javascript" src="${rootURL}/plugin/dynamic-view-plugin/js/angular.js"></script>
+<script type="text/javascript" src="${rootURL}/plugin/dynamic-view-plugin/js/engine.js"></script>
+
+<div class="dashboard">
+
+  <j:set var="views" value="${it.owner.views}" />
+  <j:set var="currentView" value="${it}" />
+  <st:include page="viewTabs.jelly" it="${it.owner.viewsTabBar}" />
+
+  <div>
+    <t:iconSize><t:rssBar/></t:iconSize>
+  </div>
+
+</div>
+
+</j:jelly>

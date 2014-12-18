@@ -1,0 +1,50 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:x="jelly:xml" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+<st:contentType value="text/html;charset=UTF-8" />
+
+<j:set var="rootURL" value="${request.contextPath}" />
+<j:new var="h" className="hudson.Functions" /><!-- instead of JSP functions -->
+<j:set var="_" value="${h.configureAutoRefresh(request, response, attrs.norefresh!=null)}"/>
+<!--
+  load static resources from the path dedicated to a specific version.
+  This "/static/VERSION/abc/def.ghi" path is interpreted by stapler to be
+  the same thing as "/abc/def.ghi", but this avoids the stale cache
+  problem when the user upgrades to new Hudson. Stapler also sets a long
+  future expiration dates for such static resources.
+-->
+<j:set var="resURL"  value="${rootURL}${h.resourcePath}" />
+<j:set var="imagesURL"  value="${rootURL}${h.resourcePath}/images" />
+
+<t:setIconSize/>
+
+<j:set var="jobs" value="${it.items}"/>
+
+<j:if test="${columnExtensions==null}">
+  <j:invokeStatic var="columnExtensions" className="hudson.model.ListView" method="getDefaultColumns"/>
+</j:if>
+
+<j:if test="${!empty(jobs) or !empty(attrs.views)}">
+  <table id="projectstatus" style="margin-top: 0; border-top: none;" class="sortable pane bigtable stripped-odd">
+    <tr class="header" style="border-top: 0;">
+      <j:forEach var="col" items="${columnExtensions}">
+        <st:include page="columnHeader.jelly" it="${col}" />
+      </j:forEach>
+      <th>
+        <st:nbsp/>
+      </th>
+    </tr>
+
+    <j:forEach var="v" items="${attrs.views}">
+      <t:projectViewNested />
+    </j:forEach>
+
+    <j:forEach var="job" items="${jobs}">
+      <j:set var="relativeLinkToJob" value="${h.getRelativeLinkTo(job)}"/>
+      <t:projectViewRow jobBaseUrl="${relativeLinkToJob.substring(0, relativeLinkToJob.length() - job.shortUrl.length())}"/>
+    </j:forEach>
+  </table>
+
+  </j:if>
+</j:jelly>
