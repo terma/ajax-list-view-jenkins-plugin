@@ -22,3 +22,4 @@ How to use
 
 * Configure it by selecting which jobs to display
 
+Thx
