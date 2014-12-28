@@ -8,7 +8,7 @@
         <version>1.554.2</version>
     </parent>
 
-    <artifactId>ajax-jobs-view-plugin</artifactId>
+    <artifactId>ajax-list-view-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
