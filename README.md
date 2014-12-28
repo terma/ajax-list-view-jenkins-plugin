@@ -10,7 +10,7 @@ Simple and small alternative for default Jenkins List View. This Plugin support 
 How to install
 ==
 
-Currently no chance to find plugin in Jenkins repository so just download it and install  [manually to Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Howtoinstallplugins)
+Currently no chance to find plugin in Jenkins repository so just [download](https://github.com/terma/ajax-list-view-jenkins-plugin/releases) it and install [manually to Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Howtoinstallplugins)
 
 How to use
 ==
