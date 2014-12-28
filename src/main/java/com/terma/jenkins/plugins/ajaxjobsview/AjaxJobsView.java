@@ -1,4 +1,4 @@
-package com.terma.dynamicviewplugin;
+package com.terma.jenkins.plugins.ajaxjobsview;
 
 import hudson.Extension;
 import hudson.model.ListView;
@@ -6,14 +6,14 @@ import hudson.model.ViewDescriptor;
 import hudson.model.ViewGroup;
 import org.kohsuke.stapler.DataBoundConstructor;
 
-public class DynamicView extends ListView {
+public class AjaxJobsView extends ListView {
 
     @DataBoundConstructor
-    public DynamicView(String name) {
+    public AjaxJobsView(String name) {
         super(name);
     }
 
-    public DynamicView(String name, ViewGroup owner) {
+    public AjaxJobsView(String name, ViewGroup owner) {
         super(name, owner);
     }
 

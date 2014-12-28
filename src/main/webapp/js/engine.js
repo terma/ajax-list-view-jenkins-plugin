@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
             dataType: "html"
         }).done(function (html) {
             jQuery("#projectstatus").remove();
-            jQuery("#viewList").after(html);
+            jQuery("#iconBar").before(html);
             console.log("jobs loaded");
         });
     }
