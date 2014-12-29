@@ -1,6 +1,6 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
 
-<script type="text/javascript" src="${rootURL}/plugin/dynamic-view-plugin/js/engine.js"></script>
+<script type="text/javascript" src="${rootURL}/plugin/ajax-list-view-plugin/js/engine.js"></script>
 
 <div class="dashboard">
 
