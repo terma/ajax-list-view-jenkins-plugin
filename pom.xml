@@ -177,22 +177,22 @@
     <repositories>
         <repository>
             <id>maven-central</id>
-            <url>http://repo1.maven.org/maven2</url>
+            <url>https://repo1.maven.org/maven2</url>
         </repository>
         <repository>
             <id>maven.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public</url>
+            <url>https://repo.jenkins-ci.org/public</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
             <id>maven-central</id>
-            <url>http://repo1.maven.org/maven2</url>
+            <url>https://repo1.maven.org/maven2</url>
         </pluginRepository>
         <pluginRepository>
             <id>maven.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public</url>
+            <url>https://repo.jenkins-ci.org/public</url>
         </pluginRepository>
     </pluginRepositories>
 
